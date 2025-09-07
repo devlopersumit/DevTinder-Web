@@ -10,7 +10,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost text-xl">🧑‍💻DevTinder</a>
             </div>
             <div className="flex gap-2">
-                {/* <div className="form-control px-4">Welcome, {user.firstName}</div> */}
+                <div className="form-control px-4">Welcome Back</div>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                        { user && <div className="w-10 rounded-full">
