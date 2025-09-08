@@ -30,11 +30,12 @@ const Body = () => {
     }, []);
 
     return (
-        <>
+        <div className="w-full h-screen">
             <Navbar />
             <Outlet />
             <Footer />
-        </>
+        </div>
+
     )
 };
 
