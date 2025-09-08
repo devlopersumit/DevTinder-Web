@@ -9,6 +9,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("elon@gmail.com");
     const [password, setPassword] = useState("Elon@123");
+    const [error, setError] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ const Login = () => {
             navigate("/");
 
         } catch (err) {
-            console.log(err);
+            setError(err?.response?.data || "Something went wrong");
         }
     }
 
@@ -45,10 +46,10 @@ const Login = () => {
                     </svg>
                     <input type="password" placeholder="Password" className="bg-transparent text-gray-500 placeholder-gray-500 outline-none text-sm w-full h-full" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div className="mt-5 text-left text-indigo-500">
+                {/* <div className="mt-5 text-left text-indigo-500">
                     <a className="text-sm" href="#">Forgot password?</a>
-                </div>
-
+                </div> */}
+                <p className="text-red-500 my-2">{error}</p>
                 <button type="submit" className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity">
                     Login
                 </button>
