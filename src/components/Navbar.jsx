@@ -38,13 +38,14 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-32 p-2 shadow text-xl">
+                        className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 min-w-24  p-2 shadow text-xl">
                         <li>
                             <Link to='/profile' className="justify-between">
                                 Profile
                             </Link>
                         </li>
                         <li><Link to='/connections'>Connections</Link></li>
+                        <li><Link to='/requests'>Requests</Link></li>
                         <li><a onClick={handleLogout}>Logout</a></li>
                     </ul>
                 </div>
