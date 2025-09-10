@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center mt-14">
+        <div className="flex justify-center mt-40">
             <form className="max-w-96 w-full text-center border border-gray-300/60 rounded-2xl px-8 bg-base-300 text-white" onSubmit={handleLogin} action="#" method="post">
                 <h1 className="text-white text-3xl mt-10 font-medium">Login</h1>
                 <p className="text-gray-300 text-sm mt-2">Please sign in to continue</p>
