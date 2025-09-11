@@ -7,14 +7,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const EditProfile = ({ user }) => {
-  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [about, setAbout] = useState(user.about);
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
+
+  const defaultPhoto = "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png";
+
+  const [photoUrl, setPhotoUrl] = useState(user.photoUrl || defaultPhoto);
+  const [firstName, setFirstName] = useState(user.firstName || "");
+  const [lastName, setLastName] = useState(user.lastName || "");
+  const [age, setAge] = useState(user.age || "");
+  const [gender, setGender] = useState(user.gender || "");
+  const [about, setAbout] = useState(user.about || "");
+  const [error, setError] = useState("");
 
   const saveProfile = async () => {
     setError("");
@@ -24,11 +27,12 @@ const EditProfile = ({ user }) => {
         { photoUrl, firstName, lastName, age, gender, about },
         { withCredentials: true }
       );
+
       dispatch(addUser(res?.data?.data));
-      // Show toaster message
+
       toast.success("✅ Profile saved successfully!", {
         position: "top-right",
-        autoClose: 3000, // 3 seconds
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -44,7 +48,8 @@ const EditProfile = ({ user }) => {
   return (
     <div className="min-h-screen bg-base-200 flex justify-center items-center px-4 py-16">
       <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-8 w-full max-w-6xl">
-        {/* Edit Form */}
+        
+        {/* Edit Profile Form */}
         <form
           className="w-full max-w-md bg-base-300 text-white border border-gray-300/60 rounded-2xl shadow-lg p-6 space-y-4"
           onSubmit={(e) => e.preventDefault()}
@@ -54,7 +59,7 @@ const EditProfile = ({ user }) => {
           {/* Profile Photo */}
           <div className="flex flex-col items-center">
             <img
-              src={photoUrl || "https://via.placeholder.com/100"}
+              src={photoUrl || defaultPhoto}
               alt="Profile Preview"
               className="w-24 h-24 rounded-full object-cover border mb-3"
             />
@@ -93,13 +98,19 @@ const EditProfile = ({ user }) => {
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Gender"
-              className="w-full px-3 py-2 rounded-lg border border-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            
+            {/* Gender Dropdown */}
+            <select
+              className="w-full px-3 py-2 rounded-lg border border-gray-300 text-white bg-base-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-            />
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+
             <textarea
               rows="3"
               placeholder="About"
@@ -116,6 +127,7 @@ const EditProfile = ({ user }) => {
           >
             Save Profile
           </button>
+
           {error && <p className="text-red-500 text-sm">{error}</p>}
         </form>
 
@@ -124,7 +136,7 @@ const EditProfile = ({ user }) => {
           <div className="relative w-72 sm:w-80 h-[480px] card bg-base-300 text-white rounded-2xl shadow-lg overflow-hidden">
             <figure className="h-[60%] overflow-hidden">
               <img
-                src={photoUrl || "/default.png"}
+                src={photoUrl || defaultPhoto}
                 alt={firstName}
                 className="w-full h-full object-cover"
               />

@@ -46,7 +46,7 @@ const Signup = () => {
           <input
             type="text"
             placeholder="First Name"
-            className="w-1/2 px-4 py-2 rounded-full border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-1/2 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -54,7 +54,7 @@ const Signup = () => {
           <input
             type="text"
             placeholder="Last Name"
-            className="w-1/2 px-4 py-2 rounded-full border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-1/2 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
