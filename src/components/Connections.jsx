@@ -6,8 +6,6 @@ import { addConnections } from "../utils/connectionSlice";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
-  console.log(connections);
-  
   const dispatch = useDispatch();
 
   const fetchConnections = async () => {
@@ -36,33 +34,33 @@ const Connections = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">🔥 Your Connections</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        🔥 Your Connections
+      </h1>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         {connections.map((user) => (
           <div
             key={user._id}
-            className="card bg-base-300 w-80 shadow-lg rounded-xl overflow-hidden 
+            className="relative w-72 h-96 bg-base-300 rounded-2xl shadow-xl overflow-hidden 
                        transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
           >
-            {/* Image */}
-            <figure className="px-4 pt-4">
-              <img
-                src={user.photoUrl}
-                alt={user.firstName}
-                className="rounded-xl h-64 w-full object-cover"
-              />
-            </figure>
+            {/* Image fills most of the card */}
+            <img
+              src={user.photoUrl}
+              alt={user.firstName}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
-            {/* Info */}
-            <div className="card-body">
-              <h2 className="card-title">
-                {user.firstName} {user.lastName}
+            {/* Overlay info like Tinder */}
+            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+              <h2 className="text-lg font-bold">
+                {user.firstName} {user.lastName},{" "}
+                <span className="font-normal">{user.age}</span>
               </h2>
-              <p className="text-gray-600">
-                {user.age}, {user.gender}
-              </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm">{user.gender}</p>
+              <p className="text-xs text-gray-200 mt-1 line-clamp-2">
                 {user.about ? user.about : "No bio available"}
               </p>
             </div>
