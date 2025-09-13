@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
 
-const Connections = () => {
+const connections = () => {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
 
@@ -71,4 +71,4 @@ const Connections = () => {
   );
 };
 
-export default Connections;
+export default connections;
